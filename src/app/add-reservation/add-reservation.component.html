@@ -1,0 +1,95 @@
+<div class="container m-2">
+    <h1>Agregar reserva</h1>
+    <hr> <br><br>
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <form [formGroup]="reservationForm" (ngSubmit)="saveReservation()" class="my-form">
+                <div class="row m-2">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cedula">Cédula</label>
+                            <input type="number" class="form-control" id="cedula" name="cedula" formControlName="cedula">
+                        </div>
+
+                        <div *ngIf="reservationForm.get('cedula')?.touched && reservationForm.get('cedula')?.errors?.['required']"
+                            class="alert alert-danger mt-2" role="alert">
+                            La cédula es requerida
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre">
+                        </div>
+                        <div *ngIf="reservationForm.get('nombre')?.touched && reservationForm.get('nombre')?.errors?.['required']"
+                            class="alert alert-danger mt-2" role="alert">
+                            El nombre es requerido
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidos" name="apellidos"
+                                formControlName="apellidos">
+                        </div>
+                        <div *ngIf="reservationForm.get('apellidos')?.touched && reservationForm.get('apellidos')?.errors?.['required']"
+                            class="alert alert-danger mt-2" role="alert">
+                            Los apellidos son requeridos
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" formControlName="email">
+                        </div>
+                        <div *ngIf="reservationForm.get('email')?.touched && reservationForm.get('email')?.errors?.['required']"
+                            class="alert alert-danger mt-2" role="alert">
+                            El email es requerido
+                        </div>
+                        <div *ngIf="reservationForm.get('email')?.hasError('email')" class="alert alert-danger mt-2"
+                            role="alert">
+                            El formato del email es inválido
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tipoCliente">Tipo de Cliente</label>
+                            <select class="form-control" id="tipoCliente" name="tipoCliente"
+                                formControlName="tipoCliente">
+                                <option value="VIP">VIP</option>
+                                <option value="Socio">Socio</option>
+                                <option value="No Socio">No Socio</option>
+                            </select>
+                        </div>
+                        <div *ngIf="reservationForm.get('tipoCliente')?.touched && reservationForm.get('tipoCliente')?.errors?.['required']"
+                            class="alert alert-danger mt-2" role="alert">
+                            El tipo de cliente es requerido
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fechaLlegada">Fecha de Llegada</label>
+                            <input type="date" class="form-control" id="fechaLlegada" name="fechaLlegada"
+                                formControlName="fechaLlegada">
+                        </div>
+                        <div *ngIf="reservationForm.get('fechaLlegada')?.touched && reservationForm.get('fechaLlegada')?.errors?.['required']"
+                            class="alert alert-danger mt-2" role="alert">
+                            la fecha de llegada es requerida
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fechaSalida">Fecha de Salida</label>
+                            <input type="date" class="form-control" id="fechaSalida" name="fechaSalida"
+                                formControlName="fechaSalida">
+                        </div>
+                        <div *ngIf="reservationForm.get('fechaSalida')?.touched && reservationForm.get('fechaSalida')?.errors?.['required']"
+                            class="alert alert-danger mt-2" role="alert">
+                            la fecha de salida es requerida
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lg btn-primary">Guardar Reserva</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
